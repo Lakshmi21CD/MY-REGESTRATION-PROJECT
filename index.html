@@ -11,27 +11,27 @@
   <div class="container">
     <h1>Online Registration Form</h1>
 
-<form id="registrationForm" action="https://assignmenttt.infinityfreeapp.com/submit.php" method="POST">
+    <form id="registrationForm" action="https://assignmenttt.infinityfreeapp.com/submit.php" method="POST">
 
       <!-- Name -->
       <label>Full Name:</label>
-      <input type="text" name="fullname" id="fullname" placeholder="Enter your name" required>
+      <input type="text" name="fullname" placeholder="Enter your name" required>
 
       <!-- Email -->
       <label>Email:</label>
-      <input type="email" name="email" id="email" placeholder="Enter your email" required>
+      <input type="email" name="email" placeholder="Enter your email" required>
 
       <!-- Phone -->
       <label>Phone Number:</label>
-      <input type="text" name="phone" id="phone" placeholder="Enter your phone number" required>
+      <input type="text" name="phone" placeholder="Enter your phone number" required>
 
       <!-- Address -->
       <label>Address:</label>
-      <textarea name="address" id="address" placeholder="Enter your full address" required></textarea>
+      <textarea name="address" placeholder="Enter your full address" required></textarea>
 
       <!-- Gender -->
       <label>Gender:</label>
-      <select name="gender" id="gender" required>
+      <select name="gender" required>
         <option value="">--Select--</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
@@ -40,7 +40,7 @@
 
       <!-- Course -->
       <label>Course:</label>
-      <select name="course" id="course" required>
+      <select name="course" required>
         <option value="">--Select a Course--</option>
         <option value="Computer Science">Computer Science</option>
         <option value="Information Technology">Information Technology</option>
@@ -60,7 +60,6 @@
       $("#registrationForm").on("submit", function(e) {
         let valid = true;
 
-        // Check required fields
         $("input[required], textarea[required], select[required]").each(function() {
           if ($(this).val().trim() === "") {
             $(this).css("border", "2px solid red");
@@ -70,11 +69,10 @@
           }
         });
 
-        // Validate phone number (10 digits)
         const phonePattern = /^[0-9]{10}$/;
-        if (!phonePattern.test($("#phone").val())) {
+        if (!phonePattern.test($("input[name='phone']").val())) {
           alert("Please enter a valid 10-digit phone number!");
-          $("#phone").css("border", "2px solid red");
+          $("input[name='phone']").css("border", "2px solid red");
           valid = false;
         }
 
